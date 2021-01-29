@@ -1,0 +1,20 @@
+<template>
+
+    <div class={wrapperClass} style={wrapperStyle}>
+        <!-- Preserve the aspect ratio. -->
+        <div style="width: 100%;padding-bottom: 100%;"></div>
+        <!-- Show a placeholder with background color. -->
+        <div style={imagePlaceholderWrapperStyle}>
+            <slot name="imagePlaceholder">
+                <div style={imagePlaceholderBackgroundColorStyle}></div>
+            </slot>
+        </div>
+
+        <img class={imageClass} style={imageStyle}
+            title={title} alt={alt} loading={loading}
+            srcset={srcSet} sizes={srcSize} src={defaultSrc}
+            onload={handleImageLoaded} onerror={handleOnError} />
+
+    </div>
+
+</template>

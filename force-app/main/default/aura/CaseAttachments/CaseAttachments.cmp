@@ -1,0 +1,43 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="CaseAttachmentController">
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <aura:attribute name="attachments" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	
+    <div class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <div class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <!-- -->
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Attachments">
+                            <span>Attachments</span>
+                        </a>
+                    </h2>
+                </div>
+                <div class="slds-no-flex">
+                    <!-- -->
+                </div>
+            </div>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+            <div class="slds-grid slds-wrap">
+                <aura:iteration items="{!v.attachments}" var="item">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4">
+                        <!--<p>{!item.title}</p>-->
+                        <div>
+                            <c:lightningImage title="{!item.title}" src="{!item.src}"
+                                              onstartload="{!c.handleOnStartLoad}" onload="{!c.handleOnLoad}" onerror="{!c.handleOnError}"></c:lightningImage>
+                        </div>
+                    </div>
+                </aura:iteration>
+            </div>
+        </div>
+        <div class="slds-card__footer">
+            <a class="slds-card__footer-action" href="javascript:void(0);">View All
+                <span class="slds-assistive-text">Attachments</span>
+            </a>
+        </div>
+    </div>
+</aura:component>
